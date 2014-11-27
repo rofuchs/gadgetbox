@@ -1,0 +1,51 @@
+<%= render template: "gadgets/_navigation" %>
+<div id="myCarousel" class="carousel slide">
+
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <% for i in 1..(@gadgets.count-1) do %>
+      <li data-target="#myCarousel" data-slide-to="<%= i %>"></li>
+    <% end %>
+  </ol>
+
+<div class="carousel-inner">
+  <% @gadgets.each do |gadget| %>
+    <% if (gadget == @gadgets.first) %>
+      <div class="active item" >
+    <% else %>
+       <div class="item">
+    <% end %>
+
+    <% if gadget.images.first %>
+      <%= image_tag gadget.images.first.image_url(:cover).to_s, :class => "img-responsive center-block" %>
+    <% else %>
+      <%= image_tag ('missing.jpg'), :class => "img-responsive center-block" %>
+    <% end %>
+
+    <div class="carousel-caption text-center">
+      <h4><%= @gadgets.first.name %></h4>
+      <p><%= gadget.description %></p>
+      <% if gadget.images %>
+        <% gadget.images.each do |image| %>
+          <%= image_tag image.image_url(:thumb).to_s %>
+        <% end %>
+      <% end %>
+    </div> 
+
+  </div>
+
+  <% end %>
+
+</div>
+
+<!-- Carousel nav -->
+
+<a class="carousel-control left" href="#myCarousel" data-slide="prev">
+  <span class="glyphicon glyphicon-chevron-left"></span>
+</a>
+
+<a class="carousel-control right" href="#myCarousel" data-slide="next">
+  <span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+
+</div>

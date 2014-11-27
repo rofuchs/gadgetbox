@@ -7,10 +7,10 @@ class GadgetsController < ApplicationController
     @gadgets = current_user.gadgets !params[:name]
 
     if params[:name]
-      puts params[:name]
-      if params[:name]
-        @gadgets = Gadget.where("user_id = ? AND name  LIKE ? ",@current_user.id, params[:name])
-      end
+      @gadgets = Gadget.where("user_id = ? AND name  LIKE ? ",@current_user.id, params[:name])
+    end
+    if params[:mode] == 'coverflow'
+      render template: "/gadgets/_coverflow"
     end
   end
 
