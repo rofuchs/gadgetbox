@@ -1,8 +1,6 @@
- <%= link_to 'Sign out', destroy_user_session_path , :method => :delete %>
-<h2> Gadgets </h2>
 
-  <%= link_to "new gadget", "/gadgets/new"%>
 
-<div class="thumbnail" style="width: 800px; margin: 10px">
+
+  <%= render template: "gadgets/_navigation" %>
   <%= render template: "gadgets/_table" %>
-</div>
+

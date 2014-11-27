@@ -4,7 +4,14 @@ class GadgetsController < ApplicationController
   def index
     @current_user = current_user
     @gadgets = []
-    @gadgets = current_user.gadgets
+    @gadgets = current_user.gadgets !params[:name]
+
+    if params[:name]
+      puts params[:name]
+      if params[:name]
+        @gadgets = Gadget.where("user_id = ? AND name  LIKE ? ",@current_user.id, params[:name])
+      end
+    end
   end
 
   def show
@@ -52,6 +59,8 @@ class GadgetsController < ApplicationController
     flash[:success] = 'Deleted'
     redirect_to gadgets_path
   end
+
+private 
 
   def upload_images
     params[:images].each do |image|

@@ -1,0 +1,17 @@
+ <%= link_to 'Sign out', destroy_user_session_path , :method => :delete %>
+<h2> Gadgets </h2>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="<%= 'active' if params[:mode] == 'table' %> ">
+    <%= link_to("table", gadgets_path(params.merge(:mode => "table"))) %>
+  </li>
+  <li role="presentation" class="<%= 'active' if params[:mode] == 'coverflow' %>">
+    <%= link_to("cover flow", gadgets_path(params.merge(:mode => "coverflow")))%>
+  </li>
+  <li role="presentation" class="<%= 'active' if params[:action] == 'new' %>">
+    <%= link_to("new", "/gadgets/new")%>
+  </li>
+  <li> 
+    <%= render template: "gadgets/_search" %>
+  <li>
+</ul>
