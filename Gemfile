@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'bootstrap-sass'
 gem 'bootstrap-slider-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

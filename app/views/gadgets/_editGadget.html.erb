@@ -1,0 +1,23 @@
+  <%= form_for @gadget , :html => { :multipart => true } do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name , :class => 'form-control'%>
+    </p>
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_field :description , :class => 'form-control'%>
+    </p>
+    <p>
+      <%= f.label "picture"%><br />
+      <% if !@gadget.images.empty? %>
+        <% @gadget.images.each do |image| %>
+          <%= image_tag image.image_url(:thumb).to_s %>
+          <% end %>
+        <% end %>
+      
+      <%= file_field_tag 'images[]', type: :file, multiple: true %>
+    </p>
+    <p>
+      <%= f.submit "save", :class => 'btn btn-default'%>
+    </p>
+  <% end %>

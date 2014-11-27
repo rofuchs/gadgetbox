@@ -1,0 +1,7 @@
+<ul>
+<li> Name : <%= @gadget.name %> </li>
+<li> Description : <%= @gadget.description %></li>
+  <% @gadget.images.each do |image| %>
+    <%= image_tag image.image_url.to_s %>
+  <% end %>
+</ul>

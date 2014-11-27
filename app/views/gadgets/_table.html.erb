@@ -1,0 +1,30 @@
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Images</th>
+    <th></th>
+  </tr>
+  <% @gadgets.each do |gadget| %>
+    <tr>
+      <td><%= gadget.name %></td>
+      <td><%= gadget.description %></td>
+      <td>
+        <% if !gadget.images.empty? %>
+        <% gadget.images.each do |image| %>
+              <%= image_tag image.image_url(:thumb).to_s %>
+        <% end %>
+        <% end %>
+      </td>
+      <td>
+      <%= button_to "show", {:controller => :gadgets,
+      :action => 'show', :id => gadget.id }, :method => :get, :class => 'btn btn-default'%>
+      <%= button_to "edit", {:controller => :gadgets,
+      :action => 'edit', :id => gadget.id }, :method => :get, :class => 'btn btn-default'%>
+      <%= button_to "delete", {:controller => :gadgets,
+      :action => 'destroy', :id => gadget.id }, :method => :delete, :class => 'btn btn-default'%>
+
+      </td>
+    </tr>
+  <% end %>
+</table>
